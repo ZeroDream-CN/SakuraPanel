@@ -121,7 +121,7 @@ if(isset($_GET['apitoken']) && $_GET['apitoken'] == API_TOKEN) {
 										}
 										CheckSuccessful("Proxy exist");
 									} else {
-										ServerNotFound("Proxy not found" . "SELECT * FROM `proxies` WHERE `username`='{$username}' AND `remote_port`='{$remotePort}' AND `proxy_type`='{$proxyType}'");
+										ServerNotFound("Proxy not found");
 									}
 								} else {
 									ServerBadRequest("Invalid request");
