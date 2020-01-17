@@ -1,0 +1,132 @@
+.testimonials {
+	position: relative;
+	z-index: 0;
+
+	.section-inner {
+		padding-bottom: 0;
+	}
+
+    .section-title {
+        margin-bottom: 48px;
+    }
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+	}
+
+	&::before {
+		top: 0;
+		right: 0;
+		bottom: 148px;
+		left: 0;
+		background: color(typography, 1);
+		z-index: -2;
+	}
+
+	&::after {
+		top: 112px;
+		left: 50%;
+		width: 202px;
+		height: 214px;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAyIiBoZWlnaHQ9IjIxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gIDxkZWZzPiAgICA8bGluZWFyR3JhZGllbnQgeDE9IjEzLjEzJSIgeTE9Ii00MC45MzQlIiB4Mj0iODcuODE3JSIgeTI9IjEyMi41MDMlIiBpZD0iYSI+ICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iIzA4RiIgb2Zmc2V0PSIwJSIvPiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMwMEM3RkEiIG9mZnNldD0iMTAwJSIvPiAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8bGluZWFyR3JhZGllbnQgeDE9IjUwJSIgeTE9Ijk2LjA4JSIgeDI9IjUwJSIgeTI9IjAlIiBpZD0iYiI+ICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iIzU1RkJEQyIgc3RvcC1vcGFjaXR5PSIuMzIiIG9mZnNldD0iMCUiLz4gICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjNTVGQkRDIiBvZmZzZXQ9IjEwMCUiLz4gICAgPC9saW5lYXJHcmFkaWVudD4gICAgPGxpbmVhckdyYWRpZW50IHgxPSI1MCUiIHkxPSIwJSIgeDI9IjUwJSIgeTI9IjEwMCUiIGlkPSJjIj4gICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMDhGIiBvZmZzZXQ9IjAlIi8+ICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iIzAwQzdGQSIgb2Zmc2V0PSIxMDAlIi8+ICAgIDwvbGluZWFyR3JhZGllbnQ+ICA8L2RlZnM+ICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICA8cGF0aCBkPSJNMTAxLjAxNyAyMTAuNDc2Yy03LjE3OS4zODgtMTQuNDgzIDEuMTMxLTIxLjE4NCAyLjMwMi0yLjA0OC4yOS0zLjk5OC42ODUtNS44MzMgMS4wOTggMTkuNjI4LTkuMTc1IDQwLjM3Ny0xNS45MjcgNjEuNjY0LTE5LjkyMiA1LjY4NC0uOTMzIDExLjMzMy0xLjk5OCAxNy4wMzUtMi41NDVsNC4yNi0uNDk3IDIuMTI3LS4yNDYuMzU4LS4wMjVjMS40NzIuMTcgMy43MjQuNDQ0IDYuNjEyLjcyMWwzLjI2LjMyNWMxLjE1OS4xMTYgMi4zODYuMjEgMy42OC40Mmw4LjQ1IDEuMTk0Yy43NTcuMTA1IDEuNTI2LjIxMiAyLjMwNi4zMjIuNzguMTIxIDEuNTcyLjI4OCAyLjM3My40MzJsNC45MjUuOTJjMS42NzIuMzEyIDMuMzg1LjYzIDUuMTMuOTU0bDQuNDk3IDEuMDU0Yy0zNC4xNDItMi4zNDItNjguMDM2IDIuNDE4LTk5LjY2IDEzLjQ5M3oiIGZpbGw9InVybCgjYSkiLz4gICAgPHBhdGggZD0iTTExMC4xMjEgMTc3Ljc4MWEyNjQuMzggMjY0LjM4IDAgMCAwLTEzLjIzMy01Mi4wMTkgMjY0LjA4NCAyNjQuMDg0IDAgMCAwLTIzLjU1NS00OC4yMThDNTQuNDM0IDQ3LjEwMyAyOS4zMzMgMjAuNTY5IDAgMCIgZmlsbD0idXJsKCNiKSIvPiAgICA8cGF0aCBkPSJNMTc4Ljg0MyA3OS41ODljMS45MTUgMS42NjQgNC4wNDkgMy4zODUgNi4xODYgNS4zNjcgNS4zMzcgNC44MzcgMTEuMDg5IDEwLjYyNSAxNi43NDIgMTYuOTFDMTc1LjQ5OSA4MC4wOTggMTQ0LjcwMyA2My42MDEgMTExIDU0IiBmaWxsPSJ1cmwoI2MpIi8+ICA8L2c+PC9zdmc+);
+		background-repeat: no-repeat;
+		z-index: -1;
+	}
+}
+
+.testimonials-wrap {
+    display: flex;
+    flex-wrap: wrap;
+	// align-items: flex-start; /* Disable equal height */
+    justify-content: center;
+	margin-right: -12px;
+    margin-left: -12px;
+	margin-top: -12px;
+
+	&:last-of-type {
+		margin-bottom: -12px;
+	}
+
+    &:not(:last-of-type) {
+        margin-bottom: 12px;
+    }
+}
+
+.testimonial {
+	@if ( get-font-family(heading) != get-font-family(base) ) {
+		@include font-family(heading);
+	}
+	color: color(typography, 3);
+    padding: 12px;
+    width: 368px;
+    max-width: 368px;
+    flex-grow: 1;
+
+	a {
+		color: color(quaternary, 1);
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.testimonial-inner {
+    display: flex;
+    flex-wrap: wrap;
+    background: color(typography, 2);
+    padding: 32px 24px;
+    height: 100%;
+
+    > * {
+        width: 100%;
+    }
+}
+
+.testimonial-body {
+	position: relative;
+
+	&::before {
+		content: '';
+		display: block;
+		width: 21px;
+		height: 18px;
+		margin-bottom: 16px;
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+ICA8cGF0aCBkPSJNOS4yMTYgMS4wMDhDNy40ODggNC44IDYuNjI0IDcuNjU2IDYuNjI0IDkuNTc2cy43MiAzLjUwNCAyLjE2IDQuNzUyYy0uNTI4LjkxMi0xLjE0IDEuNjMyLTEuODM2IDIuMTYtLjY5Ni41MjgtMS41NzIuNzkyLTIuNjI4Ljc5Mi0xLjI5NiAwLTIuMzQtLjQ0NC0zLjEzMi0xLjMzMkMuMzk2IDE1LjA2IDAgMTMuOTQ0IDAgMTIuNmMwLTIuMTEyLjgxNi00LjQwNCAyLjQ0OC02Ljg3NkM0LjA4IDMuMjUyIDUuNTY4IDEuMzQ0IDYuOTEyIDBsMi4zMDQgMS4wMDh6bTExLjE2IDBjLTEuNzI4IDMuNzkyLTIuNTkyIDYuNjQ4LTIuNTkyIDguNTY4cy43MiAzLjUwNCAyLjE2IDQuNzUyYy0xLjA1NiAxLjk2OC0yLjU0NCAyLjk1Mi00LjQ2NCAyLjk1Mi0xLjI5NiAwLTIuMzQtLjQ0NC0zLjEzMi0xLjMzMi0uNzkyLS44ODgtMS4xODgtMi4wMDQtMS4xODgtMy4zNDggMC0yLjExMi44MTYtNC40MDQgMi40NDgtNi44NzYgMS42MzItMi40NzIgMy4xMi00LjM4IDQuNDY0LTUuNzI0bDIuMzA0IDEuMDA4eiIgZmlsbD0iIzA4RiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+);
+		background-repeat: no-repeat;
+	}
+
+	p {
+		margin-bottom: 16px;
+	}
+}
+
+.testimonial-footer {
+    align-self: flex-end;
+}
+
+.testimonial-name {
+	@include font-weight(bold);
+	color: color(typography, 1);
+}
+
+@include media( '>medium' ) {
+
+	.testimonials {
+
+	    .section-title {
+	        margin-bottom: 88px;
+	    }
+
+		&::before {
+			bottom: 168px;
+		}
+
+		&::after {
+			top: 76px;
+			left: 79%;
+		}
+	}
+}

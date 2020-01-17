@@ -1,0 +1,22 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <title>Blue</title>
+  <defs>
+    <linearGradient x1="95.059%" y1="50%" x2="5.575%" y2="50%" id="a">
+      <stop stop-color="#55FBDC" offset="0%"/>
+      <stop stop-color="#08F" offset="100%"/>
+    </linearGradient>
+    <linearGradient x1="95.059%" y1="50%" x2="5.575%" y2="50%" id="b">
+      <stop stop-color="#2ED4FF" offset="0%"/>
+      <stop stop-color="#08F" offset="98.277%"/>
+    </linearGradient>
+    <linearGradient x1="48.165%" y1="66.639%" x2="0%" y2="0%" id="c">
+      <stop stop-color="#4F40DC" stop-opacity=".24" offset="0%"/>
+      <stop stop-color="#3525D3" offset="100%"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path d="M4 0h20a8 8 0 1 1 0 16H0V4a4 4 0 0 1 4-4z" fill="url(#a)"/>
+    <path d="M0 16h24a8 8 0 1 1 0 16H4a4 4 0 0 1-4-4V16z" fill="url(#b)"/>
+    <path d="M4 0h12v32H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z" fill="url(#c)" opacity=".64"/>
+  </g>
+</svg>
