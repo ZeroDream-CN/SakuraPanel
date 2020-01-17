@@ -22,7 +22,7 @@ __在线预览:__ https://sakuracloud.cn/
 ```
 git clone https://github.com/ZeroDream-CN/SakuraPanel/
 ```
-然后移动到网站目录，并设置权限
+接着移动到网站目录，并设置权限
 ```
 mv SakuraPanel/* /data/wwwroot/my.panel.com/
 chown -R www:www /data/wwwroot/my.panel.com/
@@ -39,7 +39,20 @@ chown -R www:www /data/wwwroot/my.panel.com/
 
 导入完成后，打开网站，注册一个新账号，然后在数据库中设置这个账号的 __group__ 字段为 `admin` 即可设置为管理员。
 
+## 配套 Frps 服务端
+本面板需要专用 Frps 才能兼容，请访问我的另一个项目：https://github.com/ZeroDream-CN/SakuraFrp
+
+请按照另一个项目的介绍在每个服务器节点上进行配置。
+
+Frpc 客户端无特殊需求，只要版本是 0.28.0 都可以兼容使用。
+
 ## 许可协议
 本软件仅限个人非盈利使用，不可用于商业行为。完整许可协议请查看 LICENSE 文件。
 
 如需用于商业使用，请联系作者购买商业授权，商业用户可享有更多功能和特性以及售后支持。
+
+## 交流
+
+- 官方 QQ 群：614039603
+- 官方 Telegram 群：https://t.me/natfrp
+- 作者 QQ：204034
