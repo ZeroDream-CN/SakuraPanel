@@ -35,7 +35,9 @@ chown -R www:www /data/wwwroot/my.panel.com/
 | __/api/index.php__ | 用于对接 Frps，里面只需配置数据库 |
 | __/daemon.php__ | 服务器守护进程，需要在命令行下运行，里面只需要配置数据库 |
 
-配置完成后，使用 Navicat、phpMyAdmin 等数据库管理软件创建一个新的数据库，然后导入 `import.sql`。
+配置完成后，使用 Navicat、phpMyAdmin 等数据库管理软件创建一个数据库，然后导入 `import.sql`。
+
+数据库编码类型：utf8mb4，utf8mb4_unicode_ci
 
 导入完成后，打开网站，注册一个新账号，然后在数据库中设置这个账号的 __group__ 字段为 `admin` 即可设置为管理员。
 
