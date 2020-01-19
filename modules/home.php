@@ -30,6 +30,13 @@ if($traffic < 0) {
 .fix-text p {
 	margin-bottom: 4px;
 }
+.fix-text pre {
+	background: rgba(0,0,0,0.05);
+	border-radius: 4px;
+}
+.fix-image img {
+	max-width: 100%;
+}
 </style>
 <div class="content-header">
     <div class="container-fluid">
@@ -90,7 +97,7 @@ if($traffic < 0) {
                             <h3 class="card-title">站点公告</h3>
                         </div>
                     </div>
-                    <div class="card-body fix-text">
+                    <div class="card-body fix-text fix-image">
 						<?php echo $markdown->text(Settings::get("broadcast", "暂时没有公告信息")); ?>
                     </div>
                 </div>
@@ -100,7 +107,7 @@ if($traffic < 0) {
                             <h3 class="card-title">使用帮助</h3>
                         </div>
                     </div>
-                    <div class="card-body fix-text">
+                    <div class="card-body fix-text fix-image">
 						<?php echo $markdown->text(Settings::get("helpinfo", "暂时没有帮助信息")); ?>
                     </div>
                 </div>
