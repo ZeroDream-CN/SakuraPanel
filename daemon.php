@@ -87,7 +87,7 @@ function updateTraffic($conn, $user, $traffic) {
 	if($rs && $us) {
 		// 判断流量是否已用完
 		$userTraffic = $us['traffic'] * 1024 * 1024;
-		if($userTraffic - $traffic <= 0 || $us['traffic'] - $rs['traffic'] <= 0) {
+		if($userTraffic - $traffic <= 0 || $userTraffic - $rs['traffic'] <= 0) {
 			if(count(ResultToArray(mysqli_query($conn, "SELECT * FROM `proxies` WHERE `status`='0' AND `username`='{$user}'"))) > 0) {
 				Println("用户 {$user} 的流量已经用完，正在停止该用户的所有隧道");
 				mysqli_query($conn, "UPDATE `proxies` SET `status`='2' WHERE `username`='{$user}'");
@@ -98,6 +98,7 @@ function updateTraffic($conn, $user, $traffic) {
 			// 数据库里的当日流量小于统计得到的当日流量，说明还在一天内
 			if($rs['traffic'] <= $traffic) {
 				mysqli_query($conn, "UPDATE `todaytraffic` SET `traffic`='{$enc_traffic}' WHERE `user`='{$user}'");
+				mysqli_query($conn, "UPDATE `proxies` SET `status`='0' WHERE `username`='{$user}' AND `status`='2'");
 			} else {
 				// 数据库里的当日流量大于统计得到的流量，说明这一天已经过完了，将新的流量计入数据库
 				$newTraffic = $userTraffic - $traffic;
@@ -106,6 +107,7 @@ function updateTraffic($conn, $user, $traffic) {
 				}
 				mysqli_query($conn, "UPDATE `users` SET `traffic`='{$newTraffic}' WHERE `username`='{$user}'");
 				mysqli_query($conn, "UPDATE `todaytraffic` SET `traffic`='{$traffic}' WHERE `user`='{$user}'");
+				mysqli_query($conn, "UPDATE `proxies` SET `status`='0' WHERE `username`='{$user}' AND `status`='2'");
 			}
 		}
 	} elseif($us) {
@@ -120,6 +122,7 @@ function updateTraffic($conn, $user, $traffic) {
 			}
 		} else {
 			mysqli_query($conn, "INSERT INTO `todaytraffic` (`user`, `traffic`) VALUES ('{$user}', '{$traffic}')");
+			mysqli_query($conn, "UPDATE `proxies` SET `status`='0' WHERE `username`='{$user}' AND `status`='2'");
 		}
 	} else {
 		Println("警告！发现有不存在数据库中的用户名 {$user}，可能是数据库条目被误删导致！");
