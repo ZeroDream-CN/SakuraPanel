@@ -101,7 +101,7 @@ function updateTraffic($conn, $user, $traffic) {
 				mysqli_query($conn, "UPDATE `proxies` SET `status`='0' WHERE `username`='{$user}' AND `status`='2'");
 			} else {
 				// 数据库里的当日流量大于统计得到的流量，说明这一天已经过完了，将新的流量计入数据库
-				$newTraffic = $userTraffic - $traffic;
+				$newTraffic = round(($userTraffic - $traffic) / 1024 / 1024, 2);
 				if($newTraffic < 0) {
 					$newTraffic = 0;
 				}
