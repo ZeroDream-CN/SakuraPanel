@@ -219,7 +219,7 @@ class ProxyManager {
 		if(isset($_config['proxies']['protect']) && !empty($_config['proxies']['protect'])) {
 			
 			foreach($_config['proxies']['protect'] as $key => $value) {
-				if(Intval($data['remote_port']) > $key && Intval($data['remote_port']) < $value) {
+				if(Intval($data['remote_port']) >= $key && Intval($data['remote_port']) <= $value) {
 					return Array(false, "该远程端口不可用，因为它属于系统保留端口范围，详情请点击端口规则查看。");
 				}
 			}
