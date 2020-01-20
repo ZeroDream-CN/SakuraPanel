@@ -45,7 +45,7 @@ if(isset($_GET['sign'])) {
 	$rs = Database::querySingleLine("sign", Array("username" => $_SESSION['user']));
 	if($rs) {
 		if(isset($rs['signdate'])) {
-			if(round(time() / 86400) >= (round($rs['signdate'] / 86400) + 1)) {
+			if(Intval(date("Ymd")) >= Intval(date("Ymd", $rs['signdate'])) + 1) {
 				$totaltraffic = $rs['totaltraffic'] == "" ? "0" : $rs['totaltraffic'];
 				$totalsign    = $rs['totalsign']    == "" ? "0" : $rs['totalsign'];
 				Database::update("sign", Array("signdate" => time(), "totaltraffic" => $totaltraffic + $rand, "totalsign" => $totalsign + 1), Array("username" => $_SESSION['user']));
@@ -78,7 +78,7 @@ if(isset($_GET['sign'])) {
 $signed = false;
 $ss = Database::querySingleLine("sign", Array("username" => $_SESSION['user']));
 if($ss) {
-	if(isset($ss['signdate']) && round(time() / 86400) < (round($ss['signdate'] / 86400) + 1)) {
+	if(isset($ss['signdate']) && Intval(date("Ymd")) < Intval(date("Ymd", $ss['signdate'])) + 1) {
 		$signed = true;
 	}
 }
