@@ -3,6 +3,8 @@
 
 由于时间匆忙，没有写自动安装程序，所有操作需要手动完成。
 
+__注意:__ 网站程序近期有较大改动，更新时请先阅读 Wiki 的 Update 页面，根据教程来更新。
+
 ## 功能和特性
 - 支持多用户
 - 支持用户组配置
@@ -32,7 +34,7 @@ chown -R www:www /data/wwwroot/my.panel.com/
 | 文件名 | 作用 |
 | ------ | ------ |
 | __/configuration.php__ | 网站核心配置文件，里面每个配置项都有介绍 |
-| __/api/index.php__ | 用于对接 Frps，里面只需配置数据库 |
+| __/api/index.php__ | 用于对接 Frps，里面只需配置 Token |
 | __/daemon.php__ | 服务器守护进程，需要在命令行下运行，里面只需要配置数据库 |
 
 配置完成后，使用 Navicat、phpMyAdmin 等数据库管理软件创建一个数据库，然后导入 `import.sql`。
