@@ -3,7 +3,7 @@ namespace SakuraPanel;
 
 class Utils {
 	
-	const PANEL_VERSION = "1.0.0";
+	const PANEL_VERSION = "1.0.1";
 	
 	public static function reCAPTCHA($response)
 	{
