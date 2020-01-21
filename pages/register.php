@@ -51,6 +51,12 @@ if(!$_config['register']['enable']) {
 											<p><input type="number" class="form-control" name="verifycode" id="verifycode" require /></p>
 											<?php
 											}
+											if($_config['register']['invite']) {
+											?>
+											<p><b>邀请码</b></p>
+											<p><input type="text" class="form-control" name="invitecode" id="invitecode" require /></p>
+											<?php
+											}
 											?>
 											<p><b>密码</b></p>
 											<p><input type="password" class="form-control" name="password" id="password" require /></p>
