@@ -11,12 +11,13 @@ if(!$rs) {
 	exit("<script>location='?page=login';</script>");
 }
 
-$um = new SakuraPanel\UserManager();
-$ls = $um->getLimit($_SESSION['user']);
-$inbound = round($ls['inbound'] / 1024 * 8);
-$outbound = round($ls['outbound'] / 1024 * 8);
+$um          = new SakuraPanel\UserManager();
+$ls          = $um->getLimit($_SESSION['user']);
+$inbound     = round($ls['inbound'] / 1024 * 8);
+$outbound    = round($ls['outbound'] / 1024 * 8);
 $speed_limit = "{$inbound}Mbps 上行 / {$outbound}Mbps 下行";
-$signinfo = Database::querySingleLine("sign", Array("username" => $_SESSION['user']));
+$signinfo    = Database::querySingleLine("sign", Array("username" => $_SESSION['user']));
+$token       = Database::querySingleLine("tokens", Array("username" => $_SESSION['user']))["token"] ?? "Unknown";
 ?>
 <style type="text/css">
 .fix-text p {
@@ -83,6 +84,10 @@ $signinfo = Database::querySingleLine("sign", Array("username" => $_SESSION['use
 							<tr>
 								<td style="width: 30%;"><b>用户组别</b></td>
 								<td><?php echo htmlspecialchars($rs['group']); ?></td>
+							</tr>
+							<tr>
+								<td style="width: 30%;"><b>访问密钥</b></td>
+								<td><?php echo htmlspecialchars($token); ?></td>
 							</tr>
 						</table>
 					</div>
