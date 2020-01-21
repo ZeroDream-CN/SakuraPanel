@@ -31,14 +31,14 @@ $nm = new NodeManager();
 if((isset($_GET['apitoken']) && $_GET['apitoken'] == API_TOKEN) || (isset($_GET['action']) && $_GET['action'] == "getconf")) {
 	switch($_GET['action']) {
 		case "getconf":
-			if(isset($_GET['user'], $_GET['token'], $_GET['node'])) {
-				if(Regex::isUserName($_GET['user']) && Regex::isLetter($_GET['token']) && Regex::isNumber($_GET['node'])) {
+			// 精简了一下，用户名可以不用了
+			if(isset($_GET['token'], $_GET['node'])) {
+				if(Regex::isLetter($_GET['token']) && Regex::isNumber($_GET['node'])) {
 					$rs = Database::querySingleLine("tokens", [
-						"username" => $_GET['user'],
-						"token"    => $_GET['token']
+						"token" => $_GET['token']
 					]);
 					if($rs && $nm->isNodeExist($_GET['node'])) {
-						$rs = $pm->getUserProxiesConfig($_GET['user'], $_GET['node']);
+						$rs = $pm->getUserProxiesConfig($rs['username'], $_GET['node']);
 						if(is_string($rs)) {
 							Header("Content-Type: text/plain");
 							exit($rs);
@@ -49,7 +49,7 @@ if((isset($_GET['apitoken']) && $_GET['apitoken'] == API_TOKEN) || (isset($_GET[
 						Utils::sendServerNotFound("User or node not found");
 					}
 				} else {
-					Utils::sendServerNotFound("Invalid username or token");
+					Utils::sendServerNotFound("Invalid token");
 				}
 			} else {
 				Utils::sendServerNotFound("Invalid request");
