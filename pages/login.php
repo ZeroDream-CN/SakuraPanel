@@ -42,11 +42,13 @@ global $_config;
 											<p><b>密码</b></p>
 											<p><input type="password" class="form-control" name="password" id="password" require /></p>
 											<p><button type="submit" class="btn btn-primary full-width">登录</button></p>
+											<p class='text-center'>
 											<?php
 											if($_config['register']['enable']) {
-												echo "<p class='text-center'><a href='?page=register'>注册新账号</a> | <a href='?page=findpass'>忘记密码？</a></p>";
+												echo "<a href='?page=register'>注册新账号</a> | ";
 											}
 											?>
+											<a href='?page=findpass'>忘记密码？</a></p>
 										</form>
 									</div>
 								</center>
