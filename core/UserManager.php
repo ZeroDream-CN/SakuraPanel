@@ -47,6 +47,16 @@ class UserManager {
 			return Array("status" => false, "message" => "抱歉，本站暂不开放注册");
 		}
 		
+		if($_config['register']['invite']) {
+			if(!isset($data['invitecode']) || empty($data['invitecode']) || !preg_match("/^[A-Za-z0-9]{32}$/", $data['invitecode'])) {
+				return Array("status" => false, "message" => "您需要填写正确的邀请码才能注册账号");
+			} else {
+				$inviteCode = $data['invitecode'];
+			}
+		} else {
+			$inviteCode = false;
+		}
+		
 		if(!isset($data['username']) || !isset($data['email']) || !isset($data['password']) ||
 			empty($data['username']) || empty($data['email']) || empty($data['password'])) {
 			return Array("status" => false, "message" => "请将信息填写完整");
@@ -83,6 +93,14 @@ class UserManager {
 		
 		if($this->checkEmailExist($data['email'])) {
 			return Array("status" => false, "message" => "该邮箱已被注册");
+		}
+		
+		if($inviteCode) {
+			if(!$this->checkInviteCode($data['invitecode'])) {
+				return Array("status" => false, "message" => "邀请码无效或已被使用");
+			} else {
+				Database::update("invitecode", Array("user" => $data['username']), Array("code" => $data['invitecode']));
+			}
 		}
 		
 		// 执行注册
@@ -313,6 +331,12 @@ class UserManager {
 	public function checkEmailExist($email)
 	{
 		return Database::querySingleLine("users", Array("email" => $email)) ? true : false;
+	}
+	
+	public function checkInviteCode($code)
+	{
+		$rs = Database::querySingleLine("invitecode", Array("code" => $code));
+		return ($rs && empty($rs['user']));
 	}
 	
 	public function checkEmail($email)
