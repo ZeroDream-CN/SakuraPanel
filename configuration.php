@@ -19,7 +19,8 @@ $_config = Array(
 	'register' => Array(
 		/* 允许注册 */ 'enable'    => true,
 		/* 赠送流量 */ 'traffic'   => 1024, // 1GB 流量
-		/* 隧道数量 */ 'proxies'   => 5
+		/* 隧道数量 */ 'proxies'   => 5,
+		/* 需要邀请 */ 'invite'    => false
 	),
 	
 	// 谷歌验证码相关配置
@@ -39,7 +40,7 @@ $_config = Array(
 	),
 	
 	// 邮件功能相关设置
-	// 暂时不支持 SSL
+	// 如果服务器需要 SSL，请在主机地址前面加 ssl://
 	'smtp' => Array(
 		/* 是否启用 */ 'enable'    => true,
 		/* 主机地址 */ 'host'      => 'smtp.example.com',
