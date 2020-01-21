@@ -110,12 +110,12 @@ if((isset($_GET['apitoken']) && $_GET['apitoken'] == API_TOKEN) || (isset($_GET[
 								// 目前只验证域名和子域名
 								$domain    = $_GET['domain'] ?? "null";
 								$subdomain = $_GET['subdomain'] ?? "null";
-								$username  = Database::escape($rs['username']);
-								$domain    = Database::escape($domain);
-								$subdomain = Database::escape($subdomain);
+								$username  = $rs['username'];
+								$domain    = $domain;
+								$subdomain = $subdomain;
 								$domainSQL = (isset($_GET['domain']) && !empty($_GET['domain'])) ? ["domain" => $domain] : ["subdomain" => $subdomain];
 								$querySQL  = [
-									"username" => $username,
+									"username"   => $username,
 									"proxy_type" => $proxyType
 								];
 								$querySQL  = Array_merge($querySQL, $domainSQL);
