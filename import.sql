@@ -1,6 +1,9 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+-- ------------------
+-- 找回密码
+-- ------------------
 DROP TABLE IF EXISTS `findpass`;
 CREATE TABLE `findpass`  (
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -8,6 +11,9 @@ CREATE TABLE `findpass`  (
   `time` bigint(16) NOT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 用户组
+-- ------------------
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -25,6 +31,9 @@ INSERT INTO `groups` VALUES (2, 'vip1', '青铜VIP', 10240, 10, 2048, 2048);
 INSERT INTO `groups` VALUES (3, 'vip2', '黄金VIP', 20480, 15, 3072, 3072);
 INSERT INTO `groups` VALUES (4, 'vip3', '钻石VIP', 40960, 20, 4096, 4096);
 
+-- ------------------
+-- 限速
+-- ------------------
 DROP TABLE IF EXISTS `limits`;
 CREATE TABLE `limits`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -34,6 +43,9 @@ CREATE TABLE `limits`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 节点
+-- ------------------
 DROP TABLE IF EXISTS `nodes`;
 CREATE TABLE `nodes`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -50,6 +62,9 @@ CREATE TABLE `nodes`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 隧道
+-- ------------------
 DROP TABLE IF EXISTS `proxies`;
 CREATE TABLE `proxies`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -72,6 +87,9 @@ CREATE TABLE `proxies`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 站点设置
+-- ------------------
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings`  (
   `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -81,6 +99,9 @@ CREATE TABLE `settings`  (
 INSERT INTO `settings` VALUES ('broadcast', '欢迎使用 Sakura Panel 内网穿透管理面板 by Akkariin');
 INSERT INTO `settings` VALUES ('helpinfo', '这里随便写一点什么帮助内容吧');
 
+-- ------------------
+-- 每日签到
+-- ------------------
 DROP TABLE IF EXISTS `sign`;
 CREATE TABLE `sign`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -91,6 +112,9 @@ CREATE TABLE `sign`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 今日流量
+-- ------------------
 DROP TABLE IF EXISTS `todaytraffic`;
 CREATE TABLE `todaytraffic`  (
   `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -98,6 +122,9 @@ CREATE TABLE `todaytraffic`  (
   PRIMARY KEY (`user`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 访问密钥
+-- ------------------
 DROP TABLE IF EXISTS `tokens`;
 CREATE TABLE `tokens`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -107,6 +134,9 @@ CREATE TABLE `tokens`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
+-- ------------------
+-- 用户
+-- ------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -120,5 +150,15 @@ CREATE TABLE `users`  (
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ------------------
+-- 邀请码
+-- ------------------
+DROP TABLE IF EXISTS `invitecode`;
+CREATE TABLE `invitecode`  (
+  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`code`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
