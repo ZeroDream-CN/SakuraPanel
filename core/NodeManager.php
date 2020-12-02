@@ -59,6 +59,28 @@ class NodeManager {
 		return count($rs);
 	}
 	
+	public function isUserHasPermission($user, $node)
+	{
+		$um = new SakuraPanel\UserManager();
+		$ns = $this->getNodeInfo($node);
+		$us = $um->getInfoByUser($user);
+		if(is_array($us) && is_array($ns)) {
+			if(stristr($ns['group'], "{$us['group']};")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
+	public function isNodeAvailable($node)
+	{
+		$ns = $this->getNodeInfo($node);
+		return Intval($ns['status']) == 200;
+	}
+	
 	public function addNode($data)
 	{
 		return Database::insert("nodes", $data);
