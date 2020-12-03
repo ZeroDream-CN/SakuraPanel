@@ -101,16 +101,38 @@ if((isset($_GET['apitoken']) && $_GET['apitoken'] == API_TOKEN) || (isset($_GET[
 					$proxyName  = str_replace("{$_GET['user']}.", "", $_GET['proxy_name']);
 					$proxyType  = $_GET['proxy_type'] ?? "tcp";
 					$remotePort = Intval($_GET['remote_port']) ?? "";
+					$sk         = Database::escape($_GET['sk'] ?? "");
 					$userToken  = Database::escape($_GET['user']);
 					$rs         = Database::querySingleLine("tokens", ["token" => $userToken]);
 					if($rs) {
-						if($proxyType == "tcp" || $proxyType == "udp" || $proxyType == "stcp" || $proxyType == "xtcp") {
+						if($proxyType == "tcp" || $proxyType == "udp") {
 							if(isset($remotePort) && Regex::isNumber($remotePort)) {
 								$username = Database::escape($rs['username']);
 								// 这里只对远程端口做限制，可根据自己的需要修改
 								$rs = Database::querySingleLine("proxies", [
 									"username"    => $username,
 									"remote_port" => $remotePort,
+									"proxy_type"  => $proxyType,
+									"node"        => $switchNode
+								]);
+								if($rs) {
+									if($rs['status'] !== "0") {
+										Utils::sendServerForbidden("Proxy disabled");
+									}
+									Utils::sendCheckSuccessful("Proxy exist");
+								} else {
+									Utils::sendServerNotFound("Proxy not found");
+								}
+							} else {
+								Utils::sendServerBadRequest("Invalid request");
+							}
+						} elseif($proxyType == "stcp" || $proxyType == "xtcp") {
+							if(isset($sk) && !empty($sk)) {
+								$username = Database::escape($rs['username']);
+								// 这里只对 SK 做限制，可根据自己的需要修改
+								$rs = Database::querySingleLine("proxies", [
+									"username"    => $username,
+									"sk"          => $sk,
 									"proxy_type"  => $proxyType,
 									"node"        => $switchNode
 								]);
