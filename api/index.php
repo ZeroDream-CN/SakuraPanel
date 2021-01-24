@@ -28,7 +28,7 @@ $nm = new NodeManager();
 
 // 服务端 API 部分
 // 先进行 Frps 鉴权
-if((isset($_GET['apitoken']) && $_GET['apitoken'] == API_TOKEN) || (isset($_GET['action']) && $_GET['action'] == "getconf")) {
+if(isset($_GET['apitoken']) || (isset($_GET['action']) && $_GET['action'] == "getconf")) {
 	
 	if(isset($_GET['apitoken'])) {
 		// 取得节点 ID
