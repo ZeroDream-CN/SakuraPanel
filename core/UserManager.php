@@ -61,7 +61,7 @@ class UserManager {
 			empty($data['username']) || empty($data['email']) || empty($data['password'])) {
 			return Array("status" => false, "message" => "请将信息填写完整");
 		}
-		
+		// 注释下面 能绕过验证码 jason-张百万
 		if($_config['smtp']['enable']) {
 			if(!isset($data['verifycode']) || empty($data['verifycode'])) {
 				return Array("status" => false, "message" => "请输入验证码");
@@ -82,7 +82,7 @@ class UserManager {
 				}
 			}
 		}
-		
+		// 注释到这里 能绕过验证码 jason-张百万
 		if(!$this->checkUserName($data['username'])) {
 			return Array("status" => false, "message" => "用户名不合法");
 		}
