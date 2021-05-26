@@ -25,7 +25,7 @@ $_config = Array(
 	
 	// 谷歌验证码相关配置
 	'recaptcha' => Array(
-		/* 是否启用 */ 'enable'    => true,
+		/* 是否启用 */ 'enable'    => false, //line27 这里也要注释一下不然会卡住没梯子的小伙伴 谷歌验证码
 		/* 前端密钥 */ 'sitekey'   => '',
 		/* 后端密钥 */ 'sitetoken' => ''
 	),
