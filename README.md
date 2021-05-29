@@ -36,6 +36,7 @@ chown -R www:www /data/wwwroot/my.panel.com/
 | __/configuration.php__ | 网站核心配置文件，里面每个配置项都有介绍 |
 | __/api/index.php__ | 用于对接 Frps，里面只需配置 Token |
 | __/daemon.php__ | 服务器守护进程，需要在命令行下运行，里面只需要配置数据库 |
+|导入数据库要注意 mysql 引擎 InnoDB 不会导入数据会报错 |
 
 配置完成后，使用 Navicat、phpMyAdmin 等数据库管理软件创建一个数据库，然后导入 `import.sql`。
 
