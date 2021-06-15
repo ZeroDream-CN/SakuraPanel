@@ -138,7 +138,7 @@ if(isset($_GET['getinfo']) && preg_match("/^[0-9]{1,10}$/", $_GET['getinfo'])) {
 						<p><input type="number" class="form-control" id="node_port"></input></p>
 						<p><b>管理端口</b>&nbsp;&nbsp;<small>Frps 管理 API 的端口，用于系统接口</small></p>
 						<p><input type="number" class="form-control" id="node_adminport"></input></p>
-						<p><b>管理密码</b>&nbsp;&nbsp;<small>Frps 管理 API 的端口，用于系统接口</small></p>
+						<p><b>管理密码</b>&nbsp;&nbsp;<small>Frps 管理 API 的密码，用于系统接口</small></p>
 						<p><input type="text" class="form-control" id="node_adminpass"></input></p>
 						<p><b>Token</b>&nbsp;&nbsp;<small>用于 Frpc 客户端连接用的 Token</small></p>
 						<p><input type="text" class="form-control" id="node_token"></input></p>
