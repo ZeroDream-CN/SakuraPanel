@@ -94,7 +94,7 @@ class PostHandler {
 								}
 							} else {
 								$msg = $result[1] ?? "未知错误";
-								exit($msg);
+								exit(htmlspecialchars($msg));
 							}
 						}
 					} else {
