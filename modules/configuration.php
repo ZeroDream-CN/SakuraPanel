@@ -67,15 +67,16 @@ $ss = Database::toArray(Database::search("nodes", Array("group" => "{$rs['group'
                     </div>
                     <div class="card-body">
 						<p><b>选择服务器</b></p>
-						<p><select class="form-control" id="server" <?php echo count($ss) == 0 ? "disabled" : ""; ?>>
+							<p><select class="form-control" id="server" <?php echo count($ss) == 0 ? "disabled" : ""; ?>>
 							<?php
-							foreach($ss as $si) {
+							echo "<option value=''>选择服务器</option>";
+								foreach($ss as $si) {
 								$selected = $sel_server == $si[0] ? "selected" : "";
 								echo "<option value='{$si[0]}' {$selected}>{$si[1]} ({$si[3]})</option>";
-							}
-							if(count($ss) == 0) {
+								}
+								if(count($ss) == 0) {
 								echo "<option>没有可用的服务器</option>";
-							}
+								}
 							?>
 						</select></p>
 						<p><b>配置文件内容</b></p>
@@ -122,9 +123,13 @@ $ss = Database::toArray(Database::search("nodes", Array("group" => "{$rs['group'
 <script type="text/javascript" src="assets/configuration/prettify.js"></script>
 <script type="text/javascript">
 prettyPrint();
+<script type="text/javascript">
+prettyPrint();
 window.onload = function() {
 	$('#server').change(function() {
-		location = "/?page=panel&module=configuration&server=" + $(this).children('option:selected').val();
+		if($(this).children('option:selected').val() != ''){
+			location = "/?page=panel&module=configuration&server=" + $(this).children('option:selected').val();
+		}
 	});
 }
 </script>
