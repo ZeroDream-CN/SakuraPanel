@@ -122,14 +122,15 @@ $ss = Database::toArray(Database::search("nodes", Array("group" => "{$rs['group'
 </div>
 <script type="text/javascript" src="assets/configuration/prettify.js"></script>
 <script type="text/javascript">
-prettyPrint();
+    prettyPrint();
+</script>
 <script type="text/javascript">
-prettyPrint();
-window.onload = function() {
-	$('#server').change(function() {
-		if($(this).children('option:selected').val() != ''){
-			location = "/?page=panel&module=configuration&server=" + $(this).children('option:selected').val();
-		}
-	});
-}
+    prettyPrint();
+    window.onload = function() {
+        $('#server').change(function() {
+            if ($(this).children('option:selected').val() !== '') {
+                location = "/?page=panel&module=configuration&server=" + $(this).children('option:selected').val();
+            }
+        });
+    }
 </script>
