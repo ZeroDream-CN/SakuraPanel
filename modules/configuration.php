@@ -110,7 +110,7 @@ $ss = Database::toArray(Database::search("nodes", Array("group" => "{$rs['group'
 						<p><ol>
 							<li>按照上面的方法储存好你的配置文件。</li>
 							<li>在客户端的目录里按住 Shift + 鼠标右键。</li>
-							<li>点击 “在此处打开命令提示符” 或 “在此处打开 PowerShell”。</li>
+							<li>点击 “在此处打开命令窗口” 。</li>
 							<li>输入命令 <code>frpc.exe -c frpc.ini</code> 并按下回车启动。</li>
 							<li>保持命令提示符窗口打开，不要关闭它，否则映射会中断。</li>
 						</ol></p>
